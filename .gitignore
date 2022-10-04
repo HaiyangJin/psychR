@@ -42,7 +42,6 @@ vignettes/*.pdf
 docs/
 
 # Output data
-*.Rda
 *.pdf
 ./*.csv
 ./*.html
