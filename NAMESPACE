@@ -2,5 +2,7 @@
 
 export(r2ci)
 export(rel_corrected)
+export(sdt)
 import(psych)
 import(stats)
+import(tidyselect)
