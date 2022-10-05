@@ -8,8 +8,8 @@
 #' was reported *signal* on each trial. Default to "isSame".
 #' @param SubjID *str* name of the column in `.data` describing participant IDs.
 #' Default to "SubjID".
-#' @param group_cols *vector of str* a list of columns in `.data` to be grouped
-#' by before calculating d'. (not in use now)
+#' @param group_other *vector of str* a list of columns in `.data` to be grouped
+#' by before calculating d'.
 #' @param signal *str* the level name for *signal* in `SN` of `.data`. Default
 #' to "same".
 #' @param d_correction *str* method used to correct 1 and 0 in hits and false
@@ -30,16 +30,18 @@
 #'
 #' @examples
 #' sdt(jin2022noncon)
+#' sdt(jin2022noncon, d_correction="SC1988")
+#' sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
 sdt <- function(.data, SN = "SD", isSignal = "isSame", SubjID = "SubjID",
-                group_cols = NULL,
+                group_other = NULL,
                 signal = "same", d_correction="MK1985"){
 
   out <- list()
 
   # prepare data
   rates <- .data |>
-    dplyr::select(all_of(SubjID), all_of(SN), all_of(isSignal)) |>
-    dplyr::group_by_at(dplyr::vars(SubjID, SN)) |>
+    dplyr::select(all_of(SubjID), all_of(group_other), all_of(SN), all_of(isSignal)) |>
+    dplyr::group_by_at(dplyr::vars(SubjID, group_other, SN)) |>
     dplyr::summarize(saysignal = sum(!!rlang::sym(isSignal)),
                      count = dplyr::n(),
                      .groups = "drop") |>

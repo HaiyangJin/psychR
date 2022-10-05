@@ -9,7 +9,7 @@ sdt(
   SN = "SD",
   isSignal = "isSame",
   SubjID = "SubjID",
-  group_cols = NULL,
+  group_other = NULL,
   signal = "same",
   d_correction = "MK1985"
 )
@@ -26,8 +26,8 @@ was reported \emph{signal} on each trial. Default to "isSame".}
 \item{SubjID}{\emph{str} name of the column in \code{.data} describing participant IDs.
 Default to "SubjID".}
 
-\item{group_cols}{\emph{vector of str} a list of columns in \code{.data} to be grouped
-by before calculating d'. (not in use now)}
+\item{group_other}{\emph{vector of str} a list of columns in \code{.data} to be grouped
+by before calculating d'.}
 
 \item{signal}{\emph{str} the level name for \emph{signal} in \code{SN} of \code{.data}. Default
 to "same".}
@@ -51,6 +51,8 @@ Calculate d' in Signal Detection Theory
 }
 \examples{
 sdt(jin2022noncon)
+sdt(jin2022noncon, d_correction="SC1988")
+sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
 }
 \references{
 Macmillan, N. A., & Kaplan, H. L. (1985). Detection theory analysis of group data: Estimating sensitivity from average hit and false-alarm rates. Psychological Bulletin, 98, 185–199. https://doi.org/10.1037/0033-2909.98.1.185
