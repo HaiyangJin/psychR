@@ -16,6 +16,7 @@
 #' alarm rates. There are two methods:
 #' * "MK1985" (default): correct 1 and 0 to `(2N-1)/(2N)` and `1/(2N)` where `N` is the number of trials in each condition.
 #' * "SC1988": add 0.5 to number of hits and false alarm and add 1 to the number of trials in each condition.
+#' @param dfonly *boo* whether output the dataframe only. Default to `FALSE`.
 #'
 #' @return
 #' a list
@@ -32,11 +33,10 @@
 #' sdt(jin2022noncon)
 #' sdt(jin2022noncon, d_correction="SC1988")
 #' sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
+#' sdt(jin2022noncon, dfonly=T)
 sdt <- function(.data, SN = "SD", isSignal = "isSame", SubjID = "SubjID",
                 group_other = NULL,
-                signal = "same", d_correction="MK1985"){
-
-  out <- list()
+                signal = "same", d_correction="MK1985", dfonly=FALSE){
 
   # prepare data
   rates <- .data |>
@@ -66,16 +66,27 @@ sdt <- function(.data, SN = "SD", isSignal = "isSame", SubjID = "SubjID",
   } else {
     stop(sprintf("Cannot identify the correction methods (%s) for calcualting d'.", d_correction))
   }
-  # record the correction method
-  out$correction = d_correction
 
   # calculate d
-  out$df <- rates_cor |>
+  df_d <- rates_cor |>
     dplyr::select(-.data$count) |>
     dplyr::mutate(saysignal = qnorm(.data$saysignal)) |>
     tidyr::pivot_wider(names_from = SD, values_from = .data$saysignal) |>
     dplyr::mutate(d = .data$`1` - .data$`2`) |>
     dplyr::select(-c(.data$`1`, .data$`2`))
+
+  if (dfonly) {
+    out <- df_d |>
+      dplyr::mutate(correction_d = d_correction)
+
+  } else {
+    out <- list()
+    # record the correction method
+    out$correction = d_correction
+    # save the df_d
+    out$df <- df_d
+
+  }
 
   return(out)
 }
