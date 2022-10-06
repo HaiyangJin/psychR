@@ -18,6 +18,7 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     dplyr,
     forcats,
+    pbapply,
     psych,
     rlang,
     stats,

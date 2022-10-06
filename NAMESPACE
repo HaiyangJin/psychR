@@ -3,6 +3,7 @@
 export(r2ci)
 export(rel_corrected)
 export(sdt)
+export(splithalf_d)
 import(psych)
 import(stats)
 import(tidyselect)

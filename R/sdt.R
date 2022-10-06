@@ -33,7 +33,7 @@
 #' sdt(jin2022noncon)
 #' sdt(jin2022noncon, d_correction="SC1988")
 #' sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
-#' sdt(jin2022noncon, dfonly=T)
+#' sdt(jin2022noncon, dfonly=TRUE)
 sdt <- function(.data, SN = "SD", isSignal = "isSame", SubjID = "SubjID",
                 group_other = NULL,
                 signal = "same", d_correction="MK1985", dfonly=FALSE){

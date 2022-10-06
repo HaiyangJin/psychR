@@ -11,7 +11,8 @@ sdt(
   SubjID = "SubjID",
   group_other = NULL,
   signal = "same",
-  d_correction = "MK1985"
+  d_correction = "MK1985",
+  dfonly = FALSE
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ alarm rates. There are two methods:
 \item "MK1985" (default): correct 1 and 0 to \verb{(2N-1)/(2N)} and \verb{1/(2N)} where \code{N} is the number of trials in each condition.
 \item "SC1988": add 0.5 to number of hits and false alarm and add 1 to the number of trials in each condition.
 }}
+
+\item{dfonly}{\emph{boo} whether output the dataframe only. Default to \code{FALSE}.}
 }
 \value{
 a list
@@ -53,6 +56,7 @@ Calculate d' in Signal Detection Theory
 sdt(jin2022noncon)
 sdt(jin2022noncon, d_correction="SC1988")
 sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
+sdt(jin2022noncon, dfonly=TRUE)
 }
 \references{
 Macmillan, N. A., & Kaplan, H. L. (1985). Detection theory analysis of group data: Estimating sensitivity from average hit and false-alarm rates. Psychological Bulletin, 98, 185–199. https://doi.org/10.1037/0033-2909.98.1.185
