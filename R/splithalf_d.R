@@ -40,8 +40,8 @@ splithalf_d <- function(.data, SN = "SD", SubjID = "SubjID", correction=TRUE,
   # set parallel processing
   seeds <- startseed+1:iter
   ls_df <- pbapply::pblapply(seeds, splithalf_d_one, cl=cores,
-                                 .data=.data, SN=SN, SubjID=SubjID,
-                                 correction=correction, ...)
+                             .data=.data, SN=SN, SubjID=SubjID,
+                             correction=correction, ...)
   df_alpha_d <- dplyr::bind_rows(ls_df, .id = "iter")
 
   return(df_alpha_d)

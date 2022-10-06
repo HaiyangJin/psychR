@@ -2,8 +2,10 @@
 
 export(r2ci)
 export(rel_corrected)
+export(rel_each)
 export(sdt)
 export(splithalf_d)
 import(psych)
 import(stats)
 import(tidyselect)
+importFrom(rlang,":=")
