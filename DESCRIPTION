@@ -18,13 +18,16 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     dplyr,
     forcats,
+    ggplot2,
+    papaja,
     pbapply,
     psych,
     rlang,
     stats,
     tidyr,
     tidyselect,
-    TOSTER
+    TOSTER,
+    utils
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

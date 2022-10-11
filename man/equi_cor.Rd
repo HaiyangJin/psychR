@@ -2,7 +2,7 @@
 % Please edit documentation in R/equi_cor.R
 \name{equi_cor}
 \alias{equi_cor}
-\title{Perform Equivalence Tests}
+\title{Perform Equivalence Tests for correlations}
 \usage{
 equi_cor(.data, low_eqbound_r = -1, high_eqbound_r = 1, alpha = 0.1, ...)
 }
@@ -33,5 +33,5 @@ Perform equivalence tests with \code{TOSTER::TOSTr()}, where the
 correlation coefficient is obtained from \code{psych::corr.test()}.
 }
 \examples{
-psych_cor(attitude)
+equi_cor(attitude, -.25, .25)
 }
