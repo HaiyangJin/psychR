@@ -1,6 +1,6 @@
 
-#' Tidy up output of `psych::corr.test()`
-#' @description Tidy up the output of `psych::corr.test()`.
+#' Tidied up correlation outputs
+#' @description Tidied up the output of `psych::corr.test()`.
 #' @param .data a data frame for correlation. Each row is one participant and
 #' each column is one variable.
 #' @param alpha alpha level of confidence intervals. Default to .05.
@@ -21,9 +21,6 @@
 #' @examples
 #' psych_cor(attitude)
 psych_cor <- function(.data, alpha=.05, ...) {
-
-  # .data: data frame only includes columns for correlation (no subject code column)
-  # Usage: psych_cor2(hpe_acc_subt)
 
   # run correlations
   cor_tmp <- psych::corr.test(.data, alpha=alpha, ...)

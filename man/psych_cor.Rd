@@ -2,7 +2,7 @@
 % Please edit documentation in R/psych_cor.R
 \name{psych_cor}
 \alias{psych_cor}
-\title{Tidy up output of \code{psych::corr.test()}}
+\title{Tidied up correlation outputs}
 \usage{
 psych_cor(.data, alpha = 0.05, ...)
 }
@@ -29,7 +29,7 @@ data frame of correlations
 }
 }
 \description{
-Tidy up the output of \code{psych::corr.test()}.
+Tidied up the output of \code{psych::corr.test()}.
 }
 \examples{
 psych_cor(attitude)
