@@ -15,11 +15,11 @@ rel_each(
 )
 }
 \arguments{
-\item{.data}{\emph{df} dataframe (long format)}
+\item{.data}{\emph{df} data frame (long format)}
 
 \item{DV}{\emph{str} name of the column for the dependent variable.}
 
-\item{cor_method}{\emph{func handle} the correlation methods to be used. Options
+\item{cor_method}{\emph{function handle} the correlation methods to be used. Options
 are \code{cor} (default), \code{cov}, and \code{pol} (for \code{\link[psych:tetrachor]{psych::polychoric()}}). When using
 \code{cov}, you may also want to specify \code{covar=TRUE}.}
 
@@ -36,8 +36,8 @@ questions). Default to "test_item".}
 object from \code{\link[psych:guttman]{psych::splitHalf()}}.
 }
 \description{
-Calculate reliability of data frame in long-format with
-\code{\link[psych:guttman]{psych::splitHalf()}}.
+\strong{This function are not developed very well! Please use with caution.}
+Calculate reliability of data frame in long-format with \code{\link[psych:guttman]{psych::splitHalf()}}.
 }
 \examples{
 jin2022noncon |>
