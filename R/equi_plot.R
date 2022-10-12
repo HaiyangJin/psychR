@@ -21,7 +21,7 @@
 #' equi_plot(-.3)
 #' equi_plot(.2)
 #' linecustom <- matrix(c(0.10, -0.23, -0.13, -0.04, -0.19, -0.17,
-#'                        0.30, -0.03,  0.07,  0.16,  0.01,  0.17), nrow=2)
+#'                        0.30, -0.03,  0.07,  0.16,  0.01,  0.17), nrow=2, byrow=TRUE)
 #' equi_plot(c(-.15, .15), linecustom=linecustom)
 equi_plot <- function(delta_null,
                       linecustom = NULL,
@@ -31,8 +31,6 @@ equi_plot <- function(delta_null,
                       jitters = .2,
                       label="Correlation coefficient", seed=1215) {
 
-  linecustom <- matrix(c(0.10, -0.23, -0.13, -0.04, -0.19, -0.17,
-                         0.30, -0.03,  0.07,  0.16,  0.01,  0.17), nrow=2)
   set.seed(seed)
 
   if (length(delta_null)==1){
@@ -62,6 +60,7 @@ equi_plot <- function(delta_null,
       CI_upp = linecustom[2, ])
 
   } else if (length(delta_null)==1){
+    message(delta_null)
 
     df_equi <- data.frame(
       CI_low = c(delta_ur*(1+jitters*stats::runif(1,.5,1.1)),
@@ -81,7 +80,7 @@ equi_plot <- function(delta_null,
     )
 
   } else if (length(delta_null)==2){
-
+    message(delta_null)
     df_equi <- data.frame(
       CI_low = c(delta_lr*(1+jitters*stats::runif(1,.5,1.1)),
                  delta_ur*jitters*stats::runif(1,.5,1.1),
