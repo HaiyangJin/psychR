@@ -1,14 +1,14 @@
 
 #' Perform Equivalence Tests for correlations
-#' @description Perform equivalence tests with `TOSTER::TOSTr()`, where the
-#' correlation coefficient is obtained from `psych::corr.test()`.
+#' @description Perform equivalence tests with [TOSTER::TOSTr()], where the
+#' correlation coefficient is obtained from [psych::corr.test()].
 #'
 #' @param .data a data frame for correlation. Each row is one participant and
 #' each column is one variable.
 #' @param low_eqbound_r the lower boundary to be tested against. Default to -1.
 #' @param high_eqbound_r the upper boundary to be tested against. Default to 1.
 #' @param alpha alpha level of confidence intervals. Default to .10.
-#' @param ... argument pass to `TOSTER::TOSTr()`.
+#' @param ... argument pass to [TOSTER::TOSTr()].
 #'
 #' @return a data frame:
 #' * r the correlation coefficient
@@ -20,7 +20,11 @@
 #'
 #' @examples
 #' equi_cor(attitude, -.25, .25)
-equi_cor <- function(.data, low_eqbound_r=-1, high_eqbound_r=1, alpha=.10, ...){
+equi_cor <- function(.data,
+                     low_eqbound_r=-1,
+                     high_eqbound_r=1,
+                     alpha=.10,
+                     ...){
 
   corr_mat <- psych_cor(.data, alpha=alpha/2)
 

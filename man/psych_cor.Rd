@@ -12,7 +12,7 @@ each column is one variable.}
 
 \item{alpha}{alpha level of confidence intervals. Default to .05.}
 
-\item{...}{arguments pass to \code{psych::corr.test()}.}
+\item{...}{arguments pass to \code{\link[psych:corr.test]{psych::corr.test()}}.}
 }
 \value{
 data frame of correlations
@@ -29,7 +29,7 @@ data frame of correlations
 }
 }
 \description{
-Tidied up the output of \code{psych::corr.test()}.
+Tidied up the output of \code{\link[psych:corr.test]{psych::corr.test()}}.
 }
 \examples{
 psych_cor(attitude)

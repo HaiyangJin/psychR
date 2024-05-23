@@ -16,7 +16,7 @@ each column is one variable.}
 
 \item{alpha}{alpha level of confidence intervals. Default to .10.}
 
-\item{...}{argument pass to \code{TOSTER::TOSTr()}.}
+\item{...}{argument pass to \code{\link[TOSTER:TOSTr]{TOSTER::TOSTr()}}.}
 }
 \value{
 a data frame:
@@ -29,8 +29,8 @@ a data frame:
 }
 }
 \description{
-Perform equivalence tests with \code{TOSTER::TOSTr()}, where the
-correlation coefficient is obtained from \code{psych::corr.test()}.
+Perform equivalence tests with \code{\link[TOSTER:TOSTr]{TOSTER::TOSTr()}}, where the
+correlation coefficient is obtained from \code{\link[psych:corr.test]{psych::corr.test()}}.
 }
 \examples{
 equi_cor(attitude, -.25, .25)

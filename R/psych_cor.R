@@ -1,10 +1,10 @@
 
 #' Tidied up correlation outputs
-#' @description Tidied up the output of `psych::corr.test()`.
+#' @description Tidied up the output of [psych::corr.test()].
 #' @param .data a data frame for correlation. Each row is one participant and
 #' each column is one variable.
 #' @param alpha alpha level of confidence intervals. Default to .05.
-#' @param ... arguments pass to `psych::corr.test()`.
+#' @param ... arguments pass to [psych::corr.test()].
 #'
 #' @return data frame of correlations
 #' * lower, upper: lower and upper of the (uncorrected) confidence interval boundaries
