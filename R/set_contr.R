@@ -6,7 +6,7 @@
 #' optimal mixed-effects models.
 #'
 #' @param .data A data frame, data frame extension (e.g. a tibble), or a lazy
-#' data frame (e.g. from \code{dbplyr} or \code{dtplyr})
+#' data frame (e.g. from \code{dbplyr} or \code{dtplyr}).
 #' @param varnames the columns to be applied contrasting code (without quotes)
 #' @param contraFUN the contrast coding function (name) to be used.
 #' Default to \code{MASS::contr.sdif}. Currently popular contrast

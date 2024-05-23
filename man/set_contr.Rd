@@ -8,7 +8,7 @@ set_contr(.data, varnames, contraFUN = MASS::contr.sdif)
 }
 \arguments{
 \item{.data}{A data frame, data frame extension (e.g. a tibble), or a lazy
-data frame (e.g. from \code{dbplyr} or \code{dtplyr})}
+data frame (e.g. from \code{dbplyr} or \code{dtplyr}).}
 
 \item{varnames}{the columns to be applied contrasting code (without quotes)}
 
