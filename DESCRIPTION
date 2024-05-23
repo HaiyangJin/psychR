@@ -25,6 +25,7 @@ Imports:
     psych,
     rlang,
     stats,
+    stringr,
     tidyr,
     tidyselect,
     TOSTER

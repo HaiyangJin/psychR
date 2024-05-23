@@ -7,24 +7,33 @@
 #'
 #' @param .data A data frame, data frame extension (e.g. a tibble), or a lazy
 #' data frame (e.g. from \code{dbplyr} or \code{dtplyr})
-#' @param colname the column to be applied contrasting code (without quotes)
+#' @param varnames the columns to be applied contrasting code (without quotes)
 #'
 #' @return A data frame.
 #' @export
 #'
 #' @examples
-#' set_sdif(jin2022noncon, Congruency)
-set_sdif <- function(.data, colname){
+#' set_sdif(jin2022noncon, Congruency) |> str()
+#' set_sdif(jin2022noncon, c(Congruency, Alignment)) |> str()
+set_sdif <- function(.data, varnames){
 
-  # convert column name to string if needed
-  colname <- deparse(substitute(colname))
+  varnames <- deparse(substitute(varnames)) |>
+    stringr::str_remove("c\\(") |>
+    stringr::str_remove("\\)") |>
+    stringr::str_remove(" ") |>
+    stringr::str_split(",", simplify = TRUE) |>
+    as.vector()
 
-  # check number of levels
-  N <- nlevels(.data[[colname]])
-  message(sprintf("There are %d levels in %s.", N, colname))
+  for (vn in varnames){
 
-  # apply contrast coding
-  contrasts(.data[[colname]]) <- MASS::contr.sdif(N)
+    # check number of levels
+    N <- nlevels(.data[[vn]])
+    message(sprintf("There are %d levels in %s.", N, vn))
+
+    # apply contrast coding
+    contrasts(.data[[vn]]) <- MASS::contr.sdif(N)
+
+  }
 
   return(.data)
 }

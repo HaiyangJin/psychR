@@ -4,13 +4,13 @@
 \alias{set_sdif}
 \title{Apply successive difference contrast coding}
 \usage{
-set_sdif(.data, colname)
+set_sdif(.data, varnames)
 }
 \arguments{
 \item{.data}{A data frame, data frame extension (e.g. a tibble), or a lazy
 data frame (e.g. from \code{dbplyr} or \code{dtplyr})}
 
-\item{colname}{the column to be applied contrasting code (without quotes)}
+\item{varnames}{the columns to be applied contrasting code (without quotes)}
 }
 \value{
 A data frame.
@@ -21,5 +21,6 @@ variables in data and create variables to be used in steps of obtaining the
 optimal mixed-effects models.
 }
 \examples{
-set_sdif(jin2022noncon, Congruency)
+set_sdif(jin2022noncon, Congruency) |> str()
+set_sdif(jin2022noncon, c(Congruency, Alignment)) |> str()
 }
