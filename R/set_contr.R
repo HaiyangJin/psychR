@@ -30,11 +30,16 @@ set_contr <- function(.data,
   varnames <- deparse(substitute(varnames)) |>
     stringr::str_remove("c\\(") |>
     stringr::str_remove("\\)") |>
-    stringr::str_remove(" ") |>
     stringr::str_split(",", simplify = TRUE) |>
     as.vector()
 
   for (vn in varnames){
+
+    # remove space at the beginning and end
+    vn <- vn |>
+      stringr::str_remove("^ ") |>
+      stringr::str_remove(" $") |>
+      stringr::str_remove_all("`")
 
     # check number of levels
     N <- nlevels(.data[[vn]])
