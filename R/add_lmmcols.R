@@ -44,7 +44,7 @@ add_lmmcols <- function(.data, object, Nstr=3){
     if (!stringr::str_detect(x, ":")){
       x = paste0(x, "_C")
     } else {
-      x = stringr::str_replace(x, ":", "_")
+      x = stringr::str_replace_all(x, ":", "_")
     }
   })
 
