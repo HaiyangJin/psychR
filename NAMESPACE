@@ -3,6 +3,7 @@
 export(add_lmmcols)
 export(equi_cor)
 export(equi_plot)
+export(mkrandom)
 export(psych_cor)
 export(r2ci)
 export(rel_corrected)

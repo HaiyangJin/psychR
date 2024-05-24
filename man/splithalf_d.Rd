@@ -34,7 +34,7 @@ reliability. Default to 100.}
 
 \item{cores}{\emph{int} number of cores used to run the iterations. Default to 1.}
 
-\item{...}{other arguments pass to \link{sdt}.
+\item{...}{other arguments pass to \code{\link[=sdt]{sdt()}}.
 \itemize{
 \item \strong{isSignal} \emph{str} name of the column in \code{.data} describing whether it
 was reported \emph{signal} on each trial. Default to "isSame".
@@ -42,7 +42,7 @@ was reported \emph{signal} on each trial. Default to "isSame".
 to "same".
 \item \strong{d_correction} \emph{str} method used to correct 1 and 0 in hits and false
 alarm rates. There are two methods: "MK1985" (default) and "SC1988". More see
-\link{sdt}.
+\code{\link[=sdt]{sdt()}}.
 }}
 }
 \value{
@@ -56,7 +56,7 @@ a data frame
 }
 \description{
 split the data randomly into two halves and calculate the d'
-(with \link{sdt}) for the two subsets. Then calculate the Cronbach's alpha
+(with \code{\link[=sdt]{sdt()}}) for the two subsets. Then calculate the Cronbach's alpha
 corrected with Spearman-Brown method.
 }
 \examples{

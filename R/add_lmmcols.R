@@ -52,6 +52,19 @@ add_lmmcols <- function(.data, object, Nstr=3){
   names(lmmcols) <- lmmcols_new
   df_lmm <- dplyr::rename(df_lmm, all_of(lmmcols))
 
+  # print old names -> new names
+  tmp_name <- c(`new name` = "old name")
+  message("Sanity check: whether the column names are appropriate:")
+  print(c(tmp_name, lmmcols))
+  message("")
+
+  # print the newly added columns for random effects
+  message("The available random effect columns are:")
+  lmmcols_new |>
+    paste(collapse=" + ") |>
+    print()
+  message("")
+
   # output the combined data frame
   return(cbind(.data, df_lmm))
 }

@@ -10,12 +10,12 @@ set_contr(.data, varnames, contraFUN = MASS::contr.sdif)
 \item{.data}{A data frame, data frame extension (e.g. a tibble), or a lazy
 data frame (e.g. from \code{dbplyr} or \code{dtplyr}).}
 
-\item{varnames}{the columns to be applied contrasting code (without quotes)}
+\item{varnames}{the columns to be applied contrasting code (without quotes).}
 
 \item{contraFUN}{the contrast coding function (name) to be used.
 Default to \code{MASS::contr.sdif}. Currently popular contrast
-coding functions are: \href{default}{MASS::contr.sdif()}, \link{contr.sum},
-\link{contr.treatment}, \link{contr.SAS}, etc.}
+coding functions are: \code{\link[MASS:contr.sdif]{MASS::contr.sdif()}}, \code{\link[=contr.sum]{contr.sum()}},
+\code{\link[=contr.treatment]{contr.treatment()}}, \code{\link[=contr.SAS]{contr.SAS()}}, etc.}
 }
 \value{
 A data frame.
