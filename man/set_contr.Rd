@@ -14,7 +14,7 @@ data frame (e.g. from \code{dbplyr} or \code{dtplyr}).}
 
 \item{contraFUN}{the contrast coding function (name) to be used.
 Default to \code{MASS::contr.sdif}. Currently popular contrast
-coding functions are: \href{default}{MASS::contr.sdif}, \link{contr.sum},
+coding functions are: \href{default}{MASS::contr.sdif()}, \link{contr.sum},
 \link{contr.treatment}, \link{contr.SAS}, etc.}
 }
 \value{

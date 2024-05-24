@@ -10,7 +10,7 @@
 #' @param varnames the columns to be applied contrasting code (without quotes)
 #' @param contraFUN the contrast coding function (name) to be used.
 #' Default to \code{MASS::contr.sdif}. Currently popular contrast
-#' coding functions are: [MASS::contr.sdif](default), [contr.sum],
+#' coding functions are: [MASS::contr.sdif()](default), [contr.sum],
 #' [contr.treatment], [contr.SAS], etc.
 #'
 #' @return A data frame.

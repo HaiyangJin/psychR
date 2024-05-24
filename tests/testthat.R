@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(jinr)
+library(psychr)
 
-test_check("jinr")
+test_check("psychr")

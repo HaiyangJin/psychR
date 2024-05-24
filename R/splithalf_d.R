@@ -2,7 +2,7 @@
 
 #' Calculate split half reliability for d'
 #' @description split the data randomly into two halves and calculate the d'
-#' (with [jinr::sdt()]) for the two subsets. Then calculate the Cronbach's alpha
+#' (with [sdt]) for the two subsets. Then calculate the Cronbach's alpha
 #' corrected with Spearman-Brown method.
 #'
 #' @param .data *df* dataframe (long format)
@@ -16,14 +16,14 @@
 #' @param iter *int* number of iterations for calculating the split half
 #' reliability. Default to 100.
 #' @param cores *int* number of cores used to run the iterations. Default to 1.
-#' @param ... other arguments pass to [jinr::sdt()].
+#' @param ... other arguments pass to [sdt].
 #' * __isSignal__ _str_ name of the column in `.data` describing whether it
 #' was reported *signal* on each trial. Default to "isSame".
 #' * __signal__ _str_ the level name for _signal_ in `SN` of `.data`. Default
 #' to "same".
 #' * __d_correction__ _str_ method used to correct 1 and 0 in hits and false
 #' alarm rates. There are two methods: "MK1985" (default) and "SC1988". More see
-#' [jinr::sdt()].
+#' [sdt].
 #'
 #' @return a data frame
 #' * __iter__ the number of iteraction
