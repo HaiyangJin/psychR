@@ -10,6 +10,9 @@
 #' Default to "SubjID".
 #' @param group_other *vector of str* a list of columns in `.data` to be grouped
 #' by before calculating d'.
+#' @param isCorrect *str* name of the column in `.data` describing whether it
+#' was reported *correctly* on each trial. `isSignal` would be ignored if
+#' `isCorrect` is not `NULL`.
 #' @param signal *str* the level name for *signal* in `SN` of `.data`. Default
 #' to "same".
 #' @param d_correction *str* method used to correct 1 and 0 in hits and false
@@ -33,10 +36,25 @@
 #' sdt(jin2022noncon)
 #' sdt(jin2022noncon, d_correction="SC1988")
 #' sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
+#' sdt(jin2022noncon, isCorrect="Correct")
 #' sdt(jin2022noncon, dfonly=TRUE)
-sdt <- function(.data, SN = "SD", isSignal = "isSame", SubjID = "SubjID",
+sdt <- function(.data, SN = "SD",
+                isSignal = "isSame",
+                SubjID = "SubjID",
                 group_other = NULL,
-                signal = "same", d_correction="MK1985", dfonly=FALSE){
+                isCorrect = NULL,
+                signal = "same",
+                d_correction="MK1985",
+                dfonly=FALSE){
+
+  if (!is.null(isCorrect)){
+    # use isCorrect if it is not NULL
+    .data <- .data |>
+      dplyr::mutate(isSignal = dplyr::if_else(.data[[SN]]==signal &
+                                                .data[[isCorrect]], .data[[isCorrect]],
+                                              .data[[SN]]!=signal &
+                                                !.data[[isCorrect]], .data[[isCorrect]]))
+  }
 
   # prepare data
   rates <- .data |>

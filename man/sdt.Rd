@@ -10,6 +10,7 @@ sdt(
   isSignal = "isSame",
   SubjID = "SubjID",
   group_other = NULL,
+  isCorrect = NULL,
   signal = "same",
   d_correction = "MK1985",
   dfonly = FALSE
@@ -29,6 +30,10 @@ Default to "SubjID".}
 
 \item{group_other}{\emph{vector of str} a list of columns in \code{.data} to be grouped
 by before calculating d'.}
+
+\item{isCorrect}{\emph{str} name of the column in \code{.data} describing whether it
+was reported \emph{correctly} on each trial. \code{isSignal} would be ignored if
+\code{isCorrect} is not \code{NULL}.}
 
 \item{signal}{\emph{str} the level name for \emph{signal} in \code{SN} of \code{.data}. Default
 to "same".}
@@ -56,6 +61,7 @@ Calculate d' in Signal Detection Theory
 sdt(jin2022noncon)
 sdt(jin2022noncon, d_correction="SC1988")
 sdt(jin2022noncon, group_other=c("Congruency", "Alignment"))
+sdt(jin2022noncon, isCorrect="Correct")
 sdt(jin2022noncon, dfonly=TRUE)
 }
 \references{
