@@ -67,5 +67,5 @@ sdt(jin2022noncon, dfonly=TRUE)
 \references{
 Macmillan, N. A., & Kaplan, H. L. (1985). Detection theory analysis of group data: Estimating sensitivity from average hit and false-alarm rates. Psychological Bulletin, 98, 185–199. https://doi.org/10.1037/0033-2909.98.1.185
 
-Snodgrass, J. G., & Corwin, J. (1988). Pragmatics of measuring recognition memory: Applications to dementia and amnesia. Journal of Experimental Psychology: General, 117(1), 34–50. https://doi.org/10.1037/0096-3445.117.1.34
+Snodgrass, J. G., & Cortmpwin, J. (1988). Pragmatics of measuring recognition memory: Applications to dementia and amnesia. Journal of Experimental Psychology: General, 117(1), 34–50. https://doi.org/10.1037/0096-3445.117.1.34
 }

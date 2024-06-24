@@ -28,7 +28,7 @@
 #' @references
 #' Macmillan, N. A., & Kaplan, H. L. (1985). Detection theory analysis of group data: Estimating sensitivity from average hit and false-alarm rates. Psychological Bulletin, 98, 185–199. https://doi.org/10.1037/0033-2909.98.1.185
 #'
-#' Snodgrass, J. G., & Corwin, J. (1988). Pragmatics of measuring recognition memory: Applications to dementia and amnesia. Journal of Experimental Psychology: General, 117(1), 34–50. https://doi.org/10.1037/0096-3445.117.1.34
+#' Snodgrass, J. G., & Cortmpwin, J. (1988). Pragmatics of measuring recognition memory: Applications to dementia and amnesia. Journal of Experimental Psychology: General, 117(1), 34–50. https://doi.org/10.1037/0096-3445.117.1.34
 #' @import tidyselect
 #' @export
 #'
@@ -63,9 +63,10 @@ sdt <- function(.data, SN = "SD",
     dplyr::summarize(saysignal = sum(!!rlang::sym(isSignal)),
                      count = dplyr::n(),
                      .groups = "drop") |>
-    dplyr::mutate(SD = factor(SD),
-                  SD = forcats::fct_relevel(SD, signal),
-                  SD = as.integer(SD)) # 1 will be signal and 2 will be noise
+    dplyr::mutate(SN = factor(get(SN)),
+                  SN = forcats::fct_relevel(SN, signal),
+                  SN = as.integer(SN)) |> # 1 will be signal and 2 will be noise
+    dplyr::select(-all_of(SN))
 
   # correct 0 and 1 in hits and false alarm
   if (startsWith("MK1985", d_correction)){
@@ -89,7 +90,7 @@ sdt <- function(.data, SN = "SD",
   df_d <- rates_cor |>
     dplyr::select(-.data$count) |>
     dplyr::mutate(saysignal = qnorm(.data$saysignal)) |>
-    tidyr::pivot_wider(names_from = SD, values_from = .data$saysignal) |>
+    tidyr::pivot_wider(names_from = SN, values_from = .data$saysignal) |>
     dplyr::mutate(d = .data$`1` - .data$`2`) |>
     dplyr::select(-c(.data$`1`, .data$`2`))
 
