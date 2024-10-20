@@ -88,7 +88,7 @@ plotsdt <- function(d = 2,
     ggplot2::ggplot(ggplot2::aes(x=x)) +
     ggplot2::geom_ribbon(data=df_sdt |>
                            dplyr::filter(x > c_x) |>
-                           dplyr::select(-condition),
+                           dplyr::select(-.data$condition),
                          ggplot2::aes(ymin=0, ymax=.data$y, fill=.data$sdttype),
                          alpha=0.4) +
     ggplot2::scale_fill_manual(values=c("#D55E00", "#56B4E9")) +

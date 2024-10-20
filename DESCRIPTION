@@ -24,6 +24,7 @@ Imports:
     papaja,
     pbapply,
     psych,
+    purrr,
     rlang,
     stats,
     stringr,

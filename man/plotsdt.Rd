@@ -6,11 +6,14 @@
 \usage{
 plotsdt(
   d = 2,
-  c_x = d/2,
+  c_x = d/2 - 0.75,
   xlim = c(-4, d + 4),
   ymax = NULL,
   hit = NULL,
-  fa = NULL
+  fa = NULL,
+  showd = FALSE,
+  showc = FALSE,
+  showb = FALSE
 )
 }
 \arguments{
@@ -25,6 +28,12 @@ plotsdt(
 \item{hit}{hit rate. Default to NULL. If both hit and fa are provided, d is calculated as qnorm(hit) - qnorm(fa).}
 
 \item{fa}{false alarm rate. Default to NULL. If both hit and fa are provided, d is calculated as qnorm(hit) - qnorm(fa).}
+
+\item{showd}{whether show d' value on the plot. Default to FALSE. If TRUE, d' is shown in red. If a color is provided, d' is shown in that color.}
+
+\item{showc}{whether show criterion C on the plot. Default to FALSE. If TRUE, C is shown in darkgreen. If a color is provided, C is shown in that color.}
+
+\item{showb}{whether show beta value on the plot. Default to FALSE. If TRUE, beta is shown in blue. If a color is provided, beta is shown in that color.}
 }
 \value{
 a list with three elements: \code{plot} (SDT plot),  \code{dv} (sensitivity, beta, and C) and \code{rates} (hit, miss, false alarm, and correct rejection).
