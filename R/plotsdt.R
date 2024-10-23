@@ -10,8 +10,9 @@
 #' @param showd whether show d' value on the plot. Default to FALSE. If TRUE, d' is shown in red. If a color is provided, d' is shown in that color.
 #' @param showc whether show criterion C on the plot. Default to FALSE. If TRUE, C is shown in darkgreen. If a color is provided, C is shown in that color.
 #' @param showb whether show beta value on the plot. Default to FALSE. If TRUE, beta is shown in blue. If a color is provided, beta is shown in that color.
+#' @param plotonly whether return the plot only. Default to TRUE.
 #'
-#' @return a list with three elements: `plot` (SDT plot),  `dv` (sensitivity, beta, and C) and `rates` (hit, miss, false alarm, and correct rejection).
+#' @return a list with three elements: `plot` (SDT plot), `dv` (sensitivity, beta, and C) and `rates` (hit, miss, false alarm, and correct rejection).
 #' @export
 #'
 #' @examples
@@ -24,8 +25,9 @@ plotsdt <- function(d = 2,
                     fa = NULL,
                     showd = FALSE,
                     showc = FALSE,
-                    showb = FALSE
-){
+                    showb = FALSE,
+                    plotonly = TRUE){
+
   # calculate d' if hit and fa are provided
   if (!is.null(hit) && !is.null(fa)) {
     d <- qnorm(hit) - qnorm(fa)
@@ -122,7 +124,7 @@ plotsdt <- function(d = 2,
     # add label for sensitivity d'
     plot_sdt <- plot_sdt +
       ggplot2::geom_label(label='italic("d")*"\'"', x = d/2, y = max(df_sdt$y),
-                          parse = TRUE, #
+                          parse = TRUE,
                           color=dcolor, size=20, size.unit = "pt",
                           vjust = -0.25, hjust = 0.5,
                           label.padding = ggplot2::unit(0.5, "lines")) +
@@ -206,5 +208,10 @@ plotsdt <- function(d = 2,
 
   out$plot <- plot_sdt
 
-  return(out)
+  if (plotonly) {
+    return(plot_sdt)
+  } else {
+    return(out)
+  }
+
 }
