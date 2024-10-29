@@ -13,7 +13,8 @@ plotsdt(
   fa = NULL,
   showd = FALSE,
   showc = FALSE,
-  showb = FALSE
+  showb = FALSE,
+  plotonly = TRUE
 )
 }
 \arguments{
@@ -34,9 +35,11 @@ plotsdt(
 \item{showc}{whether show criterion C on the plot. Default to FALSE. If TRUE, C is shown in darkgreen. If a color is provided, C is shown in that color.}
 
 \item{showb}{whether show beta value on the plot. Default to FALSE. If TRUE, beta is shown in blue. If a color is provided, beta is shown in that color.}
+
+\item{plotonly}{whether return the plot only. Default to TRUE.}
 }
 \value{
-a list with three elements: \code{plot} (SDT plot),  \code{dv} (sensitivity, beta, and C) and \code{rates} (hit, miss, false alarm, and correct rejection).
+a list with three elements: \code{plot} (SDT plot), \code{dv} (sensitivity, beta, and C) and \code{rates} (hit, miss, false alarm, and correct rejection).
 }
 \description{
 Plot Signal Detection Theory (SDT) functions
