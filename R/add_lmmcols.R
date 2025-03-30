@@ -27,12 +27,27 @@ add_lmmcols <- function(.data, object, Nstr=3){
   # get the original column names of `df_lmm`
   lmmcols <- colnames(df_lmm)
   lmmcols_new <- lmmcols # make a copy
+  lmmcols_IV <-  lmmcols[!grepl(":", lmmcols)]
 
   # column names of the input data frame .data
   dfcols <- colnames(.data)
   dfcolslmm <- dfcols[sapply(dfcols, \(x) any(startsWith(lmmcols_new, x)))]
   dfcolslmm <- names(sort(sapply(dfcolslmm, \(x) which(startsWith(lmmcols_new, x))[1])))
-  dfcols_short <- sapply(dfcolslmm, \(x) substr(x,1,Nstr))
+  dfcols_Nstr <- sapply(dfcolslmm, \(x) substr(x,1,Nstr))
+  # extend to multiple columns for variables with more than 2 levels
+  dfcols_short <- character(0)
+  for (thiscol in names(dfcols_Nstr)) {
+    levelnames <- levels(.data[[thiscol]])
+    nlevel <- nlevels(.data[[thiscol]])
+    if (nlevel > 2) {
+      thiscols <- paste(dfcols_Nstr[thiscol], 1:(nlevel-1), sep="")
+      names(thiscols) <- lmmcols_IV[startsWith(lmmcols_IV, thiscol)]
+    } else if (nlevel == 2) {
+      thiscols <- dfcols_Nstr[thiscol]
+      names(thiscols) <- thiscol
+    }
+    dfcols_short <- append(dfcols_short, thiscols)
+  }
 
   # update lmmcols_new with shorter names
   for (vn in 1:length(dfcols_short)){
